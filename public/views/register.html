@@ -1,16 +1,7 @@
-<div class="">
 
-	<!-- PAGE -->
-	<div id="page">
-	
-		<!-- HEADER -->
-
-<!-- sections -->
-<section ng-controller="RegController as vm">
-<div class="form container text-center">
-    <h1 class="head">Candidate registration</h1>
+<div ng-controller="RegController as vm" class="form container text-center">
+    <h1 class="head">Admin registration</h1>
 <form ng-submit="vm.submit()" name="formData" ng-model="vm.formData" >
-    	
 <div class="form-group col-xs-6 col-xs-offset-3">
     <input type="text"  name="name" ng-model="vm.formData.name" placeholder="Full name" required>
 </div>
@@ -30,18 +21,9 @@
 
 <div class="form-group col-xs-4 col-xs-offset-4">
 <input class="submit" value="Register" type="submit">    
-</form>
-
-
 </div> 
-    
-</section>
-
-
-
+</form>
 <!-- end sections -->
     </div>
 
-<footer ng-include="'views/partials/footer.html'"></footer>
-
-</div>
+<footer class="text-center" ng-include="'views/partials/footer.html'"></footer>

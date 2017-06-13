@@ -5,8 +5,8 @@ angular.module("routes", []).config(function($routeProvider, $locationProvider) 
     requireAdminLogin: true,
     title: 'Home'
   }).when('/register', {
-    templateUrl: 'views/register.html',
-    requireAdminLogin: false
+    templateUrl: '/views/register.html',
+    requireAdminLogin: true
   }).when('/login', {
     templateUrl: 'views/login.html',
     requireAdminLogin: false
@@ -20,14 +20,16 @@ angular.module("routes", []).config(function($routeProvider, $locationProvider) 
   .when('/offers', {
     templateUrl: '/views/offers.html',
     requireAdminLogin: true,
-  })
- .otherwise('/');    
+  });
+ //.otherwise('/');    
   $locationProvider.html5Mode(true);
 })
 .run(function($rootScope, $location, $route, adminAuth) {
   $rootScope.$on("$locationChangeStart", function(event, next, current) {
     if ($route.routes[$location.path()]) {
-      if ( !adminAuth.isLoggedIn() ) {
+      console.log(adminAuth.isLoggedIn());
+      
+      if ( $route.routes[$location.path()].requireAdminLogin && !adminAuth.isLoggedIn() ) {
           event.preventDefault();
           $location.path('/login');
         }

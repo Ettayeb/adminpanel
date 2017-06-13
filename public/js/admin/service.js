@@ -1,13 +1,17 @@
 angular.module('AdminService', []).factory('adminAuth', function($http, $window, $filter) {
 
   var saveToken = function(token) {
-    $window.localStorage['admin-token'] = token;
+        console.log(token);
+
+        console.log("savedd");    
+    $window.localStorage.setItem('admin-token',token);
+
   };
 
   var getToken = function() {
     //debug
     //  console.log(' token = '+ $window.localStorage['mean-token']); // working like the sharm :D
-    return $window.localStorage['admin-token'];
+    return $window.localStorage.getItem('admin-token');
   };
   var isLoggedIn = function() {
     var token = getToken();
@@ -17,6 +21,7 @@ angular.module('AdminService', []).factory('adminAuth', function($http, $window,
       payload = token.split('.')[1];
       payload = $window.atob(payload);
       payload = JSON.parse(payload);
+      console.log(payload);
       //debug
       // console.log($filter('date')(payload.exp * 1000, "dd/MM/yyyy") + " ,,, " + $filter('date')(Date.now()  , 'dd/MM/yyyy')); // working like the fucking sharm ! :S
       return payload.exp > Date.now() / 1000;

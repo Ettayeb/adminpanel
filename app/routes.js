@@ -12,6 +12,8 @@ module.exports = function(app) {
 // authentication routes
 require('./user/route')(app,mongoose,adminAuth);
 require('./company/route')(app,mongoose,adminAuth);
+require('./offer/route')(app,mongoose,adminAuth);
+
 
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {

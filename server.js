@@ -6,7 +6,7 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 //== Configs
 var db = require('./app/config/db');
-var port = process.env.PORT || 8080 ;
+var port = process.env.PORT || 8000 ;
 
 //==
 mongoose.connect(db.url); 
@@ -25,7 +25,6 @@ require('./app/routes')(app); // configure our routes
 app.get('/*', function(req, res) {
     res.sendFile(__dirname + '/public/index.html'); // load our public/index.html file
 });
-
 
 app.listen(port);
 

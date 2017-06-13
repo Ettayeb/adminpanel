@@ -1,1 +1,1 @@
-angular.module("adminpanel" , ["ngRoute" , "ui.bootstrap" ,"routes","AdminCtrl","UserCtrl","CompanyCtrl"]);
+angular.module("adminpanel" , ["ngRoute" , "ui.bootstrap" ,"routes", "OffersCtrl" ,"AdminCtrl","UserCtrl","CompanyCtrl"]);

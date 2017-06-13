@@ -15,6 +15,7 @@ var UserSchema = new Schema({
    country : {type : String },
    adress : {type : String },
    logo : {type : String },
+   type : {type : String , default : 'normal' },
    created_at : Date ,
    updated_at : Date
     

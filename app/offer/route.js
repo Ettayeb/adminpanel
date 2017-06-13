@@ -5,7 +5,7 @@ controller = require('./controller');
 
 
 app.get('/api/offers', adminAuth , controller.offers);
-app.post('/api/offers/:id', adminAuth , controller.validate);
+app.get('/api/offers/:id', adminAuth , controller.validate);
 app.delete('/api/offers/:id',adminAuth, controller.deleteoffer);
 
 };

@@ -1,0 +1,62 @@
+    <div id="wrapper">
+        <nav ng-include="'/views/partials/nav.html'" class="navbar navbar-default navbar-static-top m-b-0">
+        </nav>
+        <div ng-include="'/views/partials/sidebar.html'" class="navbar-default sidebar" role="navigation">
+        </div>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Offers List</h4> </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <ol class="breadcrumb">
+                            <li><a href="#">Dashboard</a></li>
+                            <li class="active">Offers List</li>
+                        </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /row -->
+                <div class="row" ng-controller="OffersController as vm">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Offers List</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <!--<th>Company</th>-->
+                                            <th>Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="offer in vm.offers | start: (vm.currentPage - 1) * vm.pageSize | limitTo: vm.pageSize">
+                                            <td>{{$index}}</td>
+                                            <td>{{offer.title}}</td>
+                                            <!--<td>{{offer._company.name}}</td>-->
+                                            <td>{{offer.category}}</td>
+                                            <td>{{offer.created_at}}</td>
+                                            <td><a ng-click="vm.remove(offer._id)" > <i class="fa fa-close"></i></a>
+                                                <a ng-if="offer.state == 'notvalide' || offer.state === undefined " ng-click="vm.validate(offer._id)" > <i class="fa fa-check"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                <pagination uib-pagination total-items="vm.offers.length" items-per-page="vm.pageSize" ng-model="vm.currentPage" max-size="10" 
+class="pagination-sm"></pagination>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+            <footer ng-include="'/views/partials/footer.html'" class="footer text-center"></footer>
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->

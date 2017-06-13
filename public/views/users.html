@@ -1,0 +1,58 @@
+    <div id="wrapper">
+        <nav ng-include="'/views/partials/nav.html'" class="navbar navbar-default navbar-static-top m-b-0">
+        </nav>
+        <div ng-include="'/views/partials/sidebar.html'" class="navbar-default sidebar" role="navigation">
+        </div>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Candidates List</h4> </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <ol class="breadcrumb">
+                            <li><a href="#">Dashboard</a></li>
+                            <li class="active">Candidates List</li>
+                        </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /row -->
+                <div class="row" ng-controller="UsersController as vm">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Candidates List</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Sign up Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-if="user.type != 'admin'" ng-repeat="user in vm.users | start: (vm.currentPage - 1) * vm.pageSize | limitTo: vm.pageSize">
+                                            <td>{{$index}}</td>
+                                            <td>{{user.name}}</td>
+                                            <td>{{user.email}}</td>
+                                            <td>{{user.created_at}}</td>
+                                            <td><a ng-click="vm.remove(user._id)" > <i class="fa fa-close"></i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                <pagination uib-pagination total-items="vm.users.length" items-per-page="vm.pageSize" ng-model="vm.currentPage" max-size="10" 
+class="pagination-sm"></pagination>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+            <footer ng-include="'/views/partials/footer.html'" class="footer text-center"></footer>
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->

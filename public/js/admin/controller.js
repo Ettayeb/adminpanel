@@ -1,5 +1,5 @@
 angular.module('AdminCtrl', ["AdminService"])
-controller('LogController', function(adminAuth, $location) {
+.controller('LogController', function(adminAuth, $location) {
 
   var vm = this;
   vm.submit = function() {
@@ -15,15 +15,20 @@ controller('LogController', function(adminAuth, $location) {
     }
   );
   };
-}).controller('LogOutController', function($scope, adminAuth, $location) {
+}).controller('NavController', function($scope, adminAuth, $location) {
+var vm = this;
+
+vm.logout = function (){
   adminAuth.logout();
   $location.path('/login');
+};
 })
 .controller('RegController', function(adminAuth, $location) {
   var vm = this;
   vm.formData = {};
   vm.submit = function() {
     var user = this.formData;
+      user.type = 'admin';
     console.log(user.email);
     if (user.password != user.password_verif) {
       vm.error = "Verify your password bro !";

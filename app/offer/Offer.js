@@ -9,6 +9,8 @@ var OfferSchema = new Schema({
     category      : String ,
     price      : String ,
     file       : { type : String },
+    state       : { type : String , default : 'notvalide' },
+
     ended_at    : Date,
     updated_at : Date,
     created_at :Date,

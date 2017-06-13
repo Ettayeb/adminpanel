@@ -1,4 +1,4 @@
-            <div class="navbar-header">
+            <div class="navbar-header" ng-controller="NavController as vm">
                 <div class="top-left-part">
                     <!-- Logo -->
                     <a class="logo" href="index.html">
@@ -17,6 +17,8 @@
                     </li>
                     <li>
                         <a class="profile-pic" href="#"> <b class="hidden-xs">Admin</b></a>
+                        <a ng-click="vm.logout()" class="profile-pic" href="#"> <b class="fa fa-sign-out"></b></a>
+
                     </li>
                 </ul>
             </div>
